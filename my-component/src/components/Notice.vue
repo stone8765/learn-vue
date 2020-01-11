@@ -1,10 +1,20 @@
 <template>
   <!-- 最外层 -->
-  <transition name="dialog-wrapper" enter-active-class="fadeIn" leave-active-class="fadeOut">
-    <div class="dialog-wrapper fadeIn">
+  <transition
+    enter-class="fade-in"
+    enter-active-class="fade-in"
+    leave-class="fade-out"
+    leave-active-class="fade-out"
+  >
+    <div class="dialog-wrapper">
       <!-- 居中主要层 -->
-      <transition name="dialog" enter-active-class="scaleIn" leave-active-class="scaleOut">
-        <div class="dialog scaleIn">
+      <transition
+        enter-class="scale-in"
+        enter-active-class="scale-in"
+        leave-class="scale-out"
+        leave-active-class="scale-out"
+      >
+        <div class="dialog">
           <!-- 标题 -->
           <div class="title" v-text="title"></div>
           <!-- 主要内容 -->
@@ -21,7 +31,7 @@
             <div class="btn confirm-btn" @click="onOk">确认</div>
           </div>
         </div>
-      </transition>
+      </transition>。
     </div>
   </transition>
 </template>
@@ -88,12 +98,12 @@ export default {
   font-size: 10px;
   -webkit-tap-highlight-color: transparent;
 
-  &.fadeIn {
-    animation: fadeIn 0.2s ease;
+  &.fade-in {
+    animation: fade-in 0.2s ease;
   }
 
-  &.fadeOut {
-    animation: fadeOut 0.2s ease forwards;
+  &.fade-out {
+    animation: fade-out 0.2s ease forwards;
   }
 
   .dialog {
@@ -106,20 +116,20 @@ export default {
     overflow: hidden;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 
-    &.slideDown {
-      animation: slideDown 0.2s ease;
+    &.slide-down {
+      animation: slide-down 0.2s ease;
     }
 
-    &.slideUp {
-      animation: slideUp 0.2s ease forwards;
+    &.slide-up {
+      animation: slide-up 0.2s ease forwards;
     }
 
-    &.scaleIn {
-      animation: scaleIn 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4);
+    &.scale-in {
+      animation: scale-in 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4);
     }
 
-    &.scaleOut {
-      animation: scaleOut 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4) forwards;
+    &.scale-out {
+      animation: scale-out 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4) forwards;
     }
 
     .title {
@@ -199,7 +209,7 @@ export default {
   }
 }
 
-@keyframes slideDown {
+@keyframes slide-down {
   from {
     transform: translateY(-3em);
   }
@@ -208,7 +218,7 @@ export default {
   }
 }
 
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     transform: translateY(0);
   }
@@ -217,7 +227,7 @@ export default {
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0.5;
   }
@@ -226,7 +236,7 @@ export default {
   }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -235,7 +245,7 @@ export default {
   }
 }
 
-@keyframes scaleIn {
+@keyframes scale-in {
   from {
     transform: scale(0.8);
   }
@@ -244,7 +254,7 @@ export default {
   }
 }
 
-@keyframes scaleOut {
+@keyframes scale-out {
   from {
     transform: scale(1);
   }
