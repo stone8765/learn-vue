@@ -65,96 +65,85 @@ export default {
   color: #313131;
   font-size: 10px;
   -webkit-tap-highlight-color: transparent;
-}
 
-.dialog-wrapper.fadeIn {
-  animation: fadeIn 0.2s ease;
-}
+  &.fadeIn {
+    animation: fadeIn 0.2s ease;
+  }
 
-.dialog-wrapper.fadeOut {
-  animation: fadeOut 0.2s ease forwards;
-}
+  &.fadeOut {
+    animation: fadeOut 0.2s ease forwards;
+  }
 
-.dialog-wrapper .dialog {
-  position: relative;
-  width: 85vw;
-  max-width: 30em;
-  border-radius: 0.4em;
-  background-color: #fff;
-  box-sizing: border-box;
-  overflow: hidden;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-}
+  .dialog {
+    position: relative;
+    width: 85vw;
+    max-width: 30em;
+    border-radius: 0.4em;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 
-.dialog-wrapper .dialog.slideDown {
-  animation: slideDown 0.2s ease;
-}
+    &.slideDown {
+      animation: slideDown 0.2s ease;
+    }
 
-.dialog-wrapper .dialog.slideUp {
-  animation: slideUp 0.2s ease forwards;
-}
+    &.slideUp {
+      animation: slideUp 0.2s ease forwards;
+    }
 
-.dialog-wrapper .dialog.scaleIn {
-  animation: scaleIn 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4);
-}
+    &.scaleIn {
+      animation: scaleIn 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4);
+    }
 
-.dialog-wrapper .dialog.scaleOut {
-  animation: scaleOut 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4) forwards;
-}
+    &.scaleOut {
+      animation: scaleOut 0.2s cubic-bezier(0.07, 0.89, 0.95, 1.4) forwards;
+    }
 
-.dialog-wrapper .dialog .btn {
-  cursor: pointer;
-}
+    .title {
+      font-size: 1.8em;
+      padding: 15px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
 
-.dialog-wrapper .dialog .btn:active {
-  background-color: #f4f4f4;
-}
+    .title:empty {
+      display: none;
+    }
 
-.dialog-wrapper .dialog .close-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  font-size: 1.8em;
-}
+    .content {
+      padding: 40px 20px;
+      font-size: 1.6em;
+      text-align: center;
+    }
 
-.dialog-wrapper .dialog .title {
-  font-size: 1.8em;
-  padding: 15px;
-  text-align: center;
-  background-color: #f4f4f4;
-}
+    .buttons {
+      font-size: 1.6em;
+      display: flex;
+      flex-flow: row-reverse;
 
-.dialog-wrapper .dialog .title:empty {
-  display: none;
-}
+      .btn {
+        cursor: pointer;
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid #ebebeb;
 
-.dialog-wrapper .dialog .content {
-  padding: 40px 20px;
-  font-size: 1.6em;
-  text-align: center;
-}
+        &:active {
+          background-color: #f4f4f4;
+        }
 
-.dialog-wrapper .dialog .buttons {
-  font-size: 1.6em;
-  display: flex;
-  flex-flow: row-reverse;
-}
+        &.confirm-btn {
+          color: #f2d985;
+        }
 
-.dialog-wrapper .dialog .buttons .btn {
-  flex: 1;
-  padding: 15px;
-  text-align: center;
-  border-top: 1px solid #ebebeb;
-}
-
-.dialog-wrapper .dialog .buttons .btn.confirm-btn {
-  color: #f2d985;
-}
-
-.dialog-wrapper .dialog .buttons .btn.cancel-btn {
-  color: #313131;
-  border-right: 1px solid #ebebeb;
+        &.cancel-btn {
+          color: #313131;
+          border-right: 1px solid #ebebeb;
+        }
+      }
+    }
+  }
 }
 
 @keyframes slideDown {
