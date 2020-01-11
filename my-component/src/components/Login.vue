@@ -17,13 +17,15 @@
 </template>
 
 <script>
-import MyForm from '@/components/form/MyForm'
-import MyFormItem from '@/components/form/MyFormItem'
-import MyInput from '@/components/form/MyInput'
+
+import { MyForm, MyFormItem, MyInput } from '@/components/form'
+
 import Notice from '@/components/Notice.vue'
-import create from '@/utils/create.js'
+import create from '@/utils/create'
 
 export default {
+  name: 'login',
+  componentName: 'Login',
   components: {
     MyForm,
     MyFormItem,

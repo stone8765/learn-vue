@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <IndexForm></IndexForm>
+    <Login></Login>
   </div>
 </template>
 
 <script>
-import IndexForm from '@/components/form/index.vue'
+import Login from '@/components/Login.vue'
 
 export default {
   name: 'app',
   components: {
-    IndexForm
+    Login
   }
 }
 </script>
