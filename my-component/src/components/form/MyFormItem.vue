@@ -8,9 +8,11 @@
 
 <script>
 import Schema from 'async-validator'
+import emitter from '@/mixins/emitter'
 export default {
   name: 'my-form-item',
   componentName: 'MyFormItem',
+  mixins: [emitter],
   inject: ['form'],
   props: {
     label: {
@@ -34,12 +36,11 @@ export default {
       const descriptor = { [this.prop]: rule }
 
       const schema = new Schema(descriptor)
-      let xxx = this
       return schema.validate({ [this.prop]: value }, errors => {
         if (errors) {
-          xxx.error = errors[0].message
+          this.error = errors[0].message
         } else {
-          xxx.error = ''
+          this.error = ''
         }
       })
     }
@@ -48,6 +49,8 @@ export default {
     this.$on('validate', () => {
       this.validate()
     })
+
+    this.dispatch('MyForm', 'my.form.addFormItem', [this])
   }
 }
 </script>

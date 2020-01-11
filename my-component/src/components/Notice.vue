@@ -6,13 +6,19 @@
       <transition name="dialog" enter-active-class="scaleIn" leave-active-class="scaleOut">
         <div class="dialog scaleIn">
           <!-- 标题 -->
-          <div class="title">{{title}}</div>
+          <div class="title" v-text="title"></div>
           <!-- 主要内容 -->
-          <div class="content">{{message}}</div>
+          <div
+            class="content"
+            :class="{ info: (type ==='info'),
+                      warning: (type ==='warning'),
+                      error: (type ==='error') }"
+            v-text="message"
+          ></div>
           <!-- 按钮组 -->
           <div class="buttons">
-            <div class="btn cancel-btn" @click="hide">取消</div>
-            <div class="btn confirm-btn" @click="hide">确认</div>
+            <div class="btn cancel-btn" @click="onCancel">取消</div>
+            <div class="btn confirm-btn" @click="onOk">确认</div>
           </div>
         </div>
       </transition>
@@ -26,26 +32,42 @@ export default {
     title: {
       type: String
     },
+    type: {
+      type: String,
+      default: 'info',
+      validator(value) {
+        return ~['info', 'warning', 'error'].indexOf(value)
+      }
+    },
     message: {
       type: String
+    },
+    ok: {
+      type: Function,
+      default: function() {}
+    },
+    cancel: {
+      type: Function,
+      default: function() {}
     }
   },
   data() {
     return {
-      isShow: true,
-      duration: 1000
+      isShow: true
     }
   },
   methods: {
-    show() {
-      this.isShow = true
-      setTimeout(() => {
-        //this.hide()
-      }, this.duration)
-    },
-    hide() {
+    close() {
       this.isShow = false
       this.remove()
+    },
+    onOk() {
+      this.ok(this)
+      this.close()
+    },
+    onCancel() {
+      this.cancel(this)
+      this.close()
     }
   }
 }
@@ -115,6 +137,37 @@ export default {
       padding: 40px 20px;
       font-size: 1.6em;
       text-align: center;
+
+      &::before {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        border-width: 3px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      &.info::before {
+        content: 'i';
+        background: green;
+        border-color: green;
+      }
+
+      &.warning::before {
+        content: '!';
+        background: orange;
+        border-color: orange;
+      }
+
+      &.error::before {
+        content: 'x';
+        background: red;
+        border-color: red;
+      }
     }
 
     .buttons {

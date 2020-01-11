@@ -17,11 +17,7 @@
 </template>
 
 <script>
-
 import { MyForm, MyFormItem, MyInput } from '@/components/form'
-
-import Notice from '@/components/Notice.vue'
-import create from '@/utils/create'
 
 export default {
   name: 'login',
@@ -41,14 +37,19 @@ export default {
     }
   },
   methods: {
-    create,
     submit() {
       this.$refs.loginForm.validate(valid => {
-        const notice = create(Notice, {
+        this.$notice({
           title: '消息提示',
-          message: valid ? 'success' : 'failed'
+          type: valid ? 'info' : 'error',
+          message: valid ? '登录成功' : '登录失败',
+          ok: function() {
+            window.console.log('ok.')
+          },
+          cancel: function() {
+            window.console.log('cancel.')
+          }
         })
-        notice.show()
       })
     }
   }

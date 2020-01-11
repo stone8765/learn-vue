@@ -17,9 +17,18 @@ export default {
     model: { type: Object, required: true },
     rules: { type: Object }
   },
+  data() {
+    return {
+      formItems: []
+    }
+  },
   methods: {
     validate(callback) {
-      const asyncValidates = this.$children
+      // const asyncValidates = this.$children
+      //   .filter(item => item.prop)
+      //   .map(item => item.validate())
+
+      var asyncValidates = this.formItems
         .filter(item => item.prop)
         .map(item => item.validate())
 
@@ -27,6 +36,11 @@ export default {
         .then(() => callback(true))
         .catch(() => callback(false))
     }
+  },
+  created() {
+    this.$on('my.form.addFormItem', item => {
+      this.formItems.push(item)
+    })
   }
 }
 </script>
